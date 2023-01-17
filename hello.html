@@ -3,32 +3,7 @@
     <body>
         <canvas width="600" height="600"/>
 
-        <script>
-            const canvas = document.querySelector('canvas');
-            const context = canvas.getContext('2d');
+        <script src="code.js"/>
 
-            context.fillStyle = 'yellowgreen';
-            // context.fillRect(100,100, 270, 94);
-
-            context.lineWidth = 7;
-            context.beginPath();
-            context.rect(300, 300, -50, -208);
-            context.stroke();
-
-            context.beginPath();
-            
-            context.arc(300, 300, 140, 0, Math.PI * 1.5);
-            context.fill();
-
-            let x = 5;
-
-            let dinner = "empanada";
-
-            const saySomething = (param) => {
-                console.log(param);
-            }
-
-            saySomething('hello master Kenobi')
-        </script>
     </body>
 </html>
