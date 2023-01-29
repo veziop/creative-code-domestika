@@ -1,2 +1,3 @@
-/./sketches/node_modules/.
-/./.gitignore
+/sketches/node_modules
+/sketches/package-lock.json
+/sketches/package.json
