@@ -1,3 +1,4 @@
 /sketches/node_modules
 /sketches/package-lock.json
 /sketches/package.json
+.DS_Store
