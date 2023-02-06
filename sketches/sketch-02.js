@@ -1,15 +1,12 @@
 'use strict';
 
 const canvasSketch = require('canvas-sketch');
+const math = require('canvas-sketch-util/math');
+const random = require('canvas-sketch-util/random');
 
 const settings = {
   dimensions: [ 1080, 1080 ]
 };
-
-const degreesToRadians = function(angleInDegrees) {
-  return angleInDegrees / 180 * Math.PI;
-}
-
 
 const sketch = () => {
   return ({ context, width, height }) => {
@@ -25,11 +22,11 @@ const sketch = () => {
     const h = height * 0.1;
     let x, y;
 
-    const num = 102;
+    const num = 19;
     const radius = width * 0.3;
 
     for (let i = 0; i < num; i++) {
-      let slice = degreesToRadians(360 / num);
+      let slice = math.degToRad(360 / num);
       let angle = slice * i;
 
       x = cx + radius * Math.sin(angle);
@@ -39,6 +36,9 @@ const sketch = () => {
       context.save();
       context.translate(x, y);
       context.rotate(-angle);
+      context.scale(
+        random.range(1, 2),
+        random.range(1, 3));
   
       context.beginPath();
       context.rect(-w * 0.5, -h * 0.5, w, h);
