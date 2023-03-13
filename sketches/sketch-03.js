@@ -12,10 +12,13 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
     
-    let x = width / 2;
-    let y = height / 2;
+    const nx = 5;
+    const ny = 7;
+    const x = width * 0.1;
+    const y = height * 0.14;
     const radius = 60;
     const diameter = radius * 2;
+    const gap = 10;
 
     // drawOppPair(context, x, y, radius, 'black')
     // context.translate(width / 2, height / 2);
@@ -25,19 +28,30 @@ const sketch = () => {
 
     // context.translate(width / 2, height / 4);
     // drawCircle(context, 0, 0, 40)
-
+    context.save();
     context.translate(x, y);
-    for (let i = 0; i < 9; i++) {
-      context.translate(diameter * i, 0)
-      drawOppPair(context, 0, 0, radius, 'black');
-      context.restore();
-    };
+    // for (let i = 1; i < nx + 1; i++) {
+    //   context.translate(diameter + (i + gap), 0);
+    //   drawOppPair(context, 0, 0, radius, 'black');
+      
+    // };
     
-
-
+    for (let i = 1; i < ny + 1; i++) {
+      horizontalLooper(context, nx, diameter, gap, drawCircle, 'red')
+      // context.restore();
+      context.translate(x,y)
+      context.translate(0, diameter + (i + gap));
+    }
 
   };
 };
+
+function horizontalLooper(context,numberOfElements, size, gap, drawFn, colour) {
+  for (let i = 1; i < numberOfElements + 1; i++) {
+    context.translate(size + (i + gap), 0);
+    drawFn(context, 0, 0, size / 2, colour);
+  };
+}
 
 function drawCircle(context, xCord, yCord, radius, fillColour) {
   context.fillStyle = fillColour;
